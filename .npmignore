@@ -21,4 +21,4 @@ mkdocs.yml
 # Ignore misc. files.
 .npmignore
 gulpfile.js
-jest.config.js
+jest.config.ts
