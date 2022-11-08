@@ -1,9 +1,9 @@
 /*
  * Created by Trevor Sears <trevor@trevorsears.com> (https://trevorsears.com/).
  * 8:48 PM -- June 16th, 2019.
- * Project: <name>
+ * Project: tsjwt
  * 
- * <name> - <desc>
+ * tsjwt - A JSON Web Token implementation in TypeScript.
  * Copyright (C) 2022 Trevor Sears
  * 
  * This program is free software: you can redistribute it and/or modify

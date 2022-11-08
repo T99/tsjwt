@@ -1,7 +1,7 @@
 {
-	"name": "<name>",
-	"version": "<version>",
-	"description": "<desc>",
+	"name": "tsjwt",
+	"version": "0.1.0",
+	"description": "A JSON Web Token implementation in TypeScript.",
 	"type": "module",
 	"exports": {
 		".": "./js/main.js"
@@ -21,15 +21,15 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/<github_org>/<base_name>.git"
+		"url": "git+https://github.com/T99/tsjwt.git"
 	},
 	"keywords": [],
 	"author": "Trevor Sears <trevor@trevorsears.com> (https://trevorsears.com/)",
 	"license": "GPL-3.0-or-later",
 	"bugs": {
-		"url": "https://github.com/<github_org>/<base_name>/issues"
+		"url": "https://github.com/T99/tsjwt/issues"
 	},
-	"homepage": "https://github.com/<github_org>/<base_name>#readme",
+	"homepage": "https://github.com/T99/tsjwt#readme",
 	"devDependencies": {
 		"@t99/eslint-config": "latest",
 		"@types/jest": "latest",
