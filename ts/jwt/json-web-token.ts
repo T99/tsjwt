@@ -23,7 +23,7 @@ export class JSONWebToken extends AbstractJSONWebToken {
 	
 	public constructor(payload: JSONWebTokenPayload,
 					   secret: string,
-					   hashingAlgorithm: HashingAlgorithmIdentifier = "HS256",
+					   hashingAlgorithm: HashingAlgorithmIdentifier,
 					   headers: JSONWebTokenHeaders =
 						   JSONWebToken.getDefaultHeaders(hashingAlgorithm)) {
 		
