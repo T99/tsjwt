@@ -304,6 +304,23 @@ export class DecodedJSONWebToken extends AbstractJSONWebToken {
 		
 	}
 	
+	public validateSecret(secret: string): boolean {
+		
+		const actualSignature: string = this.getSignature();
+		const expectedSignature: string = new JSONWebToken(
+			this.getPayload(),
+			secret,
+			this.getHeaders()["alg"] as HashingAlgorithmIdentifier,
+			this.getHeaders(),
+		).getSignature();
+		
+		return crypto.timingSafeEqual(
+			Buffer.from(actualSignature),
+			Buffer.from(expectedSignature),
+		);
+		
+	}
+	
 	/**
 	 * Validates the contents of this DecodedJSONWebToken against the provided
 	 * secret, using the options as specified by the caller. This method will
