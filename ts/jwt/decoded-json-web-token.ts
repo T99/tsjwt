@@ -150,7 +150,8 @@ export class DecodedJSONWebToken extends AbstractJSONWebToken {
 	 * was received.
 	 */
 	protected constructor(headers: JSONWebTokenHeaders,
-						  payload: JSONWebTokenPayload, signature: string) {
+						  payload: JSONWebTokenPayload,
+						  signature: string) {
 		
 		super(headers, payload);
 		
