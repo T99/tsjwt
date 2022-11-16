@@ -193,10 +193,10 @@ export class DecodedJSONWebToken extends AbstractJSONWebToken {
 	 * @see ValidationOptions For more information regarding the options that
 	 * are available for the validation process.
 	 */
-	public static from(token: string,
-					   validateBeforeReturn: boolean = true,
-					   secret?: string,
-					   options: Partial<ValidationOptions> = {},
+	public static decode(token: string,
+						 validateBeforeReturn: boolean = true,
+						 secret?: string,
+						 options: Partial<ValidationOptions> = {},
 	): DecodedJSONWebToken {
 		
 		// Trim extra whitespace off.
@@ -291,21 +291,10 @@ export class DecodedJSONWebToken extends AbstractJSONWebToken {
 			headers, payload, signature
 		);
 		
-		if (validateBeforeReturn) result.validate(options);
+		// TODO - Need proper check to see if 'secret' is defined
+		if (validateBeforeReturn) result.validate(secret as string, options);
 		
 		return result;
-		
-	}
-	
-	// DOC-ME [11/10/2022 @ 4:51 PM] Documentation is required!
-	// TODO [11/10/2022 @ 4:51 PM] Get rid of #from and move that method into
-	//     this one.
-	public static decode(token: string,
-						 validateBeforeReturn: boolean = true,
-						 options: Partial<ValidationOptions> = {},
-	): DecodedJSONWebToken {
-		
-		return DecodedJSONWebToken.from(token, validateBeforeReturn, options);
 		
 	}
 	
