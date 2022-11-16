@@ -38,10 +38,13 @@ export class JSONWebToken extends AbstractJSONWebToken {
 	
 	public static decode(token: string,
 						 validateBeforeReturn: boolean = true,
+						 secret?: string,
 						 options: Partial<ValidationOptions> = {},
 	): DecodedJSONWebToken {
 		
-		return DecodedJSONWebToken.decode(token, validateBeforeReturn, options);
+		return DecodedJSONWebToken.decode(
+			token, validateBeforeReturn, secret, options
+		);
 		
 	}
 	
