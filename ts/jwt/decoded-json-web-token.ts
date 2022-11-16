@@ -12,7 +12,7 @@ import {
 	JSONWebTokenHeaders,
 	JSONWebTokenPayload,
 } from "../types/jwt-types.js";
-import { JSONPrimitive } from "../types/json-types.js";
+import { JSONPrimitive, JSONValue } from "../types/json-types.js";
 import { JWTValidationError } from "../error/jwt-validation-error.js";
 import { JSONWebToken } from "./json-web-token.js";
 
@@ -327,6 +327,20 @@ export class DecodedJSONWebToken extends AbstractJSONWebToken {
 			Buffer.from(actualSignature),
 			Buffer.from(expectedSignature),
 		);
+		
+	}
+	
+	/**
+	 * Returns true if 
+	 * 
+	 * @param {JSONValue | undefined} allowableIssuers An array of allowable
+	 * values for the 'iss' (issuer)
+	 * @returns {boolean}
+	 */
+	public validateIssuers(
+		...allowableIssuers: Array<JSONValue | undefined>): boolean {
+		
+		return allowableIssuers.includes(this.payload.iss);
 		
 	}
 	
