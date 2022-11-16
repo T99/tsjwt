@@ -4,11 +4,17 @@
  * Project: tsjwt
  */
 
-import { AbstractJSONWebToken } from "./abstract-json-web-token";
-import { JWTParsingError } from "../error/jwt-parsing-error";
-import { JSONWebTokenHeaders, JSONWebTokenPayload } from "../types/jwt-types";
-import { JSONPrimitive } from "../types/json-types";
-import { JWTValidationError } from "../error/jwt-validation-error";
+import * as crypto from "node:crypto";
+import { AbstractJSONWebToken } from "./abstract-json-web-token.js";
+import { JWTParsingError } from "../error/jwt-parsing-error.js";
+import {
+	HashingAlgorithmIdentifier,
+	JSONWebTokenHeaders,
+	JSONWebTokenPayload,
+} from "../types/jwt-types.js";
+import { JSONPrimitive } from "../types/json-types.js";
+import { JWTValidationError } from "../error/jwt-validation-error.js";
+import { JSONWebToken } from "./json-web-token.js";
 
 /**
  * An object specifying various options related to the JWT validation process.

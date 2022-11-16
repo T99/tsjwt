@@ -4,7 +4,7 @@
  * Project: tsjwt
  */
 
-import { JSONObject } from "./json-types";
+import { JSONObject } from "./json-types.js";
 
 export type HashingAlgorithmIdentifier =
 	| "HS256"

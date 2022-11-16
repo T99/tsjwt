@@ -4,8 +4,8 @@
  * Project: tsjwt
  */
 
-import { DecodedJSONWebToken } from "../jwt/decoded-json-web-token";
-import { JSONWebTokenHeaders, JSONWebTokenPayload } from "../types/jwt-types";
+import { DecodedJSONWebToken } from "../jwt/decoded-json-web-token.js";
+import { JSONWebTokenHeaders, JSONWebTokenPayload } from "../types/jwt-types.js";
 
 test("Basic decoding test", (): void => {
 	

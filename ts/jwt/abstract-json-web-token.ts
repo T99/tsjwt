@@ -7,7 +7,7 @@
 import {
 	JSONWebTokenHeaders,
 	JSONWebTokenPayload, JSONWebTokenPayloadField
-} from "../types/jwt-types";
+} from "../types/jwt-types.js";
 
 export abstract class AbstractJSONWebToken {
 	

@@ -4,18 +4,18 @@
  * Project: tsjwt
  */
 
-import crypto from "crypto";
+import * as crypto from "node:crypto";
 import {
 	HashingAlgorithm,
 	HashingAlgorithmIdentifier,
 	JSONWebTokenHeaders,
 	JSONWebTokenPayload,
-} from "../types/jwt-types";
-import { AbstractJSONWebToken } from "./abstract-json-web-token";
+} from "../types/jwt-types.js";
+import { AbstractJSONWebToken } from "./abstract-json-web-token.js";
 import {
 	DecodedJSONWebToken,
 	ValidationOptions
-} from "./decoded-json-web-token";
+} from "./decoded-json-web-token.js";
 
 export class JSONWebToken extends AbstractJSONWebToken {
 	
