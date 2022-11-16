@@ -305,6 +305,14 @@ export class DecodedJSONWebToken extends AbstractJSONWebToken {
 		
 	}
 	
+	/**
+	 * Returns true if the provided secret can be validated as matching the
+	 * signature of this JWT, otherwise false.
+	 * 
+	 * @param {string} secret The secret against which to validate this JWT.
+	 * @returns {boolean} true if the provided secret can be validated as
+	 * matching the signature of this JWT, otherwise false.
+	 */
 	public validateSecret(secret: string): boolean {
 		
 		const actualSignature: string = this.getSignature();
