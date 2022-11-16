@@ -19,8 +19,6 @@ import {
 
 export class JSONWebToken extends AbstractJSONWebToken {
 	
-	protected hashingAlgorithm: HashingAlgorithmIdentifier;
-	
 	protected secret: string;
 	
 	public constructor(payload: JSONWebTokenPayload,
@@ -31,7 +29,6 @@ export class JSONWebToken extends AbstractJSONWebToken {
 		
 		super(headers, payload);
 		
-		this.hashingAlgorithm = hashingAlgorithm;
 		this.secret = secret;
 		
 	}
@@ -82,7 +79,10 @@ export class JSONWebToken extends AbstractJSONWebToken {
 	 */
 	protected getHashingAlgorithm(): HashingAlgorithm {
 		
-		switch (this.hashingAlgorithm) {
+		const identifier: HashingAlgorithmIdentifier =
+			this.getHashingAlgorithmIdentifier();
+		
+		switch (identifier) {
 			
 			case "HS256":
 				return (input: string): string =>
@@ -118,7 +118,7 @@ export class JSONWebToken extends AbstractJSONWebToken {
 			case "EdDSA":
 			default:
 				throw new Error(
-					`Unrecognized hashing algorithm: ${this.hashingAlgorithm}`
+					`Unrecognized hashing algorithm: ${identifier}`
 				);
 			
 		}

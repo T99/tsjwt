@@ -5,9 +5,14 @@
  */
 
 import {
+	HashingAlgorithmIdentifier,
 	JSONWebTokenHeaders,
-	JSONWebTokenPayload, JSONWebTokenPayloadField
+	JSONWebTokenPayload,
+	JSONWebTokenPayloadField,
+	SUPPORTED_HASHING_ALGORITHM_IDENTIFIERS,
+	VALID_HASHING_ALGORITHM_IDENTIFIERS,
 } from "../types/jwt-types.js";
+import { JWTParsingError } from "../error/jwt-parsing-error.js";
 
 export abstract class AbstractJSONWebToken {
 	
@@ -46,6 +51,43 @@ export abstract class AbstractJSONWebToken {
 		return Buffer.from(
 			JSON.stringify(this.getHeaders())
 		).toString("base64url");
+		
+	}
+	
+	public getHashingAlgorithmIdentifier(): HashingAlgorithmIdentifier {
+		
+		const headers: JSONWebTokenHeaders = this.getHeaders();
+		
+		if (headers.alg === undefined) {
+			
+			throw new JWTParsingError(
+				"Attempting to discern the hashing algorithm used on a JWT, " +
+				"but found the 'alg' header field to be undefined."
+			);
+			
+		} else if (!VALID_HASHING_ALGORITHM_IDENTIFIERS.includes(
+			headers.alg as HashingAlgorithmIdentifier
+		)) {
+			
+			throw new JWTParsingError(
+				"Attempting to discern the hashing algorithm used on a JWT, " +
+				"but found the 'alg' header field to specify an invalid " +
+				`hashing algorithm: '${headers.alg}'.`
+			);
+			
+		} else if (!SUPPORTED_HASHING_ALGORITHM_IDENTIFIERS.includes(
+			headers.alg as HashingAlgorithmIdentifier
+		)) {
+			
+			throw new JWTParsingError(
+				"Attempting to discern the hashing algorithm used on a JWT, " +
+				"but found the 'alg' header field to specify a valid but " +
+				`unsupported hashing algorithm: '${headers.alg}'.`
+			);
+			
+		}
+		
+		return headers.alg as HashingAlgorithmIdentifier;
 		
 	}
 	
